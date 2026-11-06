@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Awad — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eadfc8;--paper:#f6efdf;--ink:#1a1410;--card:#fffaf0;--red:#d83a1e;--blue:#2336c9;--yel:#f2b71f;--g1:#eadfc8;--g2:#f4d9a0;--g3:#f0b79c;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1610;--paper:#241d15;--ink:#f1e6cf;--card:#2c241a;--g1:#1b1610;--g2:#3a2a14;--g3:#3d1f16;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b1610;--paper:#241d15;--ink:#f1e6cf;--card:#2c241a;--g1:#1b1610;--g2:#3a2a14;--g3:#3d1f16;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Serif Display",Georgia,serif;font-size:18px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.anton{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400}
+.mono{font-family:"Space Mono",monospace}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 8px) 14px 8px;background:var(--bg);border-bottom:3px solid var(--ink)}
+nav .logo{font-family:Anton,Impact,sans-serif;font-size:26px;text-decoration:none;margin-right:auto;letter-spacing:.03em}
+nav .logo b{color:var(--red)}
+nav a.l{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;text-transform:uppercase;text-decoration:none;padding:6px 10px;border:2px solid transparent;border-radius:99px;transition:background .25s,color .25s,transform .25s}
+nav a.l:hover{transform:rotate(-3deg) scale(1.06);border-color:var(--ink)}
+nav a.l.on{background:var(--ink);color:var(--bg)}
+#theme{font:700 14px "Space Mono",monospace;background:var(--yel);color:#1a1410;border:2px solid var(--ink);border-radius:99px;padding:6px 12px;cursor:pointer;transition:transform .25s}
+#theme:hover{transform:rotate(8deg) scale(1.08)}
+/* hero */
+header#top{position:relative;min-height:100svh;padding:110px 20px 60px;display:grid;align-content:center;overflow:hidden;background:linear-gradient(120deg,var(--g1),var(--g2),var(--g3),var(--g1));background-size:300% 300%;animation:drift 22s ease-in-out infinite}
+@keyframes drift{50%{background-position:100% 50%}}
+.shape{position:absolute;opacity:.85;animation:float 9s ease-in-out infinite}
+.s1{width:90px;height:90px;border-radius:50%;background:var(--red);top:16%;right:9%}
+.s2{width:70px;height:70px;background:var(--blue);bottom:14%;left:7%;animation-delay:-3s;transform:rotate(12deg)}
+.s3{width:0;height:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:78px solid var(--yel);top:30%;left:4%;animation-delay:-6s}
+.s4{width:46px;height:46px;border:6px solid var(--ink);border-radius:50%;bottom:24%;right:16%;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-26px) rotate(14deg)}}
+.name{font-family:Anton,Impact,sans-serif;font-size:clamp(70px,23vw,320px);line-height:.88;margin:0;text-transform:uppercase;display:flex;flex-wrap:wrap;position:relative;z-index:2}
+.name span{position:relative;display:inline-block;opacity:0;transform:translateY(60px);animation:in .9s cubic-bezier(.2,.8,.2,1) forwards;transition:transform .3s,color .3s}
+.name span:nth-child(1){animation-delay:.1s}.name span:nth-child(2){animation-delay:.25s;color:var(--red)}.name span:nth-child(3){animation-delay:.4s}.name span:nth-child(4){animation-delay:.55s;color:var(--blue)}.name span:nth-child(5){animation-delay:.7s}
+.name span:hover{transform:rotate(-8deg) scale(1.08)}
+.name span::after{content:attr(data-l);position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;color:transparent;-webkit-text-fill-color:transparent;background-image:var(--tile,none);background-size:120px 120px;-webkit-background-clip:text;background-clip:text;-webkit-mask-image:radial-gradient(circle 160px at var(--mx,-999px) var(--my,-999px),#000 0,#000 45%,transparent 100%);mask-image:radial-gradient(circle 160px at var(--mx,-999px) var(--my,-999px),#000 0,#000 45%,transparent 100%);animation:nums 6s linear infinite}
+@keyframes nums{to{background-position:120px 240px}}
+@keyframes in{to{opacity:1;transform:none}}
+.sub{font-size:clamp(22px,4vw,44px);font-style:italic;max-width:640px;margin:18px 0 0;position:relative;z-index:2;line-height:1.15}
+.sub u{text-decoration-color:var(--red);text-decoration-thickness:4px;text-underline-offset:5px}
+.hero-photo{position:absolute;right:5%;bottom:12%;width:clamp(130px,24vw,300px);transform:rotate(7deg);z-index:1}
+.badge{position:absolute;left:46%;top:19%;width:clamp(90px,14vw,150px);animation:spin 18s linear infinite;z-index:3}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrong{position:absolute;left:20px;bottom:18px;font:700 13px "Space Mono",monospace;background:var(--ink);color:var(--bg);padding:6px 10px;transform:rotate(-3deg);z-index:3}
+/* photo cards (white background cut-outs) */
+.photo{background:#fff;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:12px 12px 8px;color:#1a1410}
+.photo svg{width:100%;height:auto;display:block}
+.photo figcaption{font:700 11px "Space Mono",monospace;text-transform:uppercase;border-top:2px dashed #1a1410;margin-top:8px;padding-top:6px}
+/* scroll + 3D layer */
+nav{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+nav.hide{transform:translateY(-110%)}
+nav:focus-within{transform:none}
+#bar{position:fixed;top:0;left:0;right:0;height:6px;background:var(--red);transform-origin:0 50%;transform:scaleX(var(--prog,0));z-index:60;pointer-events:none}
+header#top,section,footer{position:relative;z-index:1}
+.cubes{position:fixed;inset:0;pointer-events:none;z-index:0;perspective:900px;overflow:hidden}
+.cube{--s:80px;position:absolute;width:var(--s);height:var(--s);transform-style:preserve-3d;transform:rotateX(calc(var(--sy,0)*.18deg + 25deg)) rotateY(calc(var(--sy,0)*.27deg + 35deg))}
+.cube i{position:absolute;inset:0;display:grid;place-items:center;font:normal 32px Anton,Impact,sans-serif;font-style:normal;border:3px solid #1a1410;color:#1a1410}
+.cube i:nth-child(1){transform:translateZ(calc(var(--s)/2));background:#f2b71f}
+.cube i:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--s)/2));background:#d83a1e}
+.cube i:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--s)/2));background:#2336c9;color:#fff}
+.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--s)/2));background:#f2b71f}
+.cube i:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--s)/2));background:#d83a1e}
+.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--s)/2));background:#2336c9;color:#fff}
+.c1{left:3vw;top:24vh}.c2{--s:62px;right:4vw;top:58vh}.c3{--s:50px;left:48vw;top:80vh}
+header#top .name{transform:translateY(calc(var(--h,0)*-140px)) scale(calc(1 - var(--h,0)*.3));transform-origin:0 50%;opacity:calc(1 - var(--h,0)*1.25);filter:blur(calc(var(--h,0)*10px))}
+header#top .sub{transform:translateY(calc(var(--h,0)*-90px));opacity:calc(1 - var(--h,0)*1.6)}
+header#top .hero-photo{transform:rotate(calc(7deg + var(--h,0)*50deg)) translateY(calc(var(--h,0)*180px)) scale(calc(1 - var(--h,0)*.5));opacity:calc(1 - var(--h,0)*1.4)}
+header#top .badge,header#top .wrong{opacity:calc(1 - var(--h,0)*1.5)}
+header#top .shape{opacity:calc(.85 - var(--h,0)*1.3)}
+.js .reveal.fl{transform:translateX(-130px) rotate(-5deg)}
+.js .reveal.fr{transform:translateX(130px) rotate(5deg)}
+.js .reveal.fz{transform:scale(.55) rotate(-7deg)}
+.js .reveal.fx{transform:perspective(900px) rotateX(-75deg) translateY(70px);transform-origin:50% 100%}
+.about figure.photo{transform:perspective(900px) rotateY(calc(var(--p,0)*40deg)) rotate(-4deg)}
+.stat{transform:perspective(900px) rotateX(calc(var(--p,0)*22deg))}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:26px}
+.skill{perspective:900px;height:170px;cursor:pointer;outline-offset:6px}
+.sk{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.skill:hover .sk,.skill:focus-visible .sk,.skill.flip .sk{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:14px}
+.face.f b{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:44px;text-transform:uppercase;line-height:1}
+.face.f small{font:700 11px "Space Mono",monospace;text-transform:uppercase;margin-bottom:6px}
+.face.b{background:var(--ink);color:var(--bg);transform:rotateY(180deg);font-size:18px;line-height:1.3}
+.skill:nth-child(4n+1) .face.f{background:var(--yel);color:#1a1410}
+.skill:nth-child(4n+2) .face.f{background:var(--card)}
+.skill:nth-child(4n+3) .face.f{background:var(--red);color:#fff}
+.skill:nth-child(4n) .face.f{background:var(--blue);color:#fff}
+.hint{font-size:13px;margin:22px 0 0}
+button.mail{background:none;border-style:solid;border-width:0 0 6px;border-color:var(--red);color:inherit;cursor:pointer;padding:0;line-height:1.1;user-select:text}
+#copied{font:700 13px "Space Mono",monospace;margin:18px 0 0;min-height:1.5em}
+@media (max-width:760px){.cube{--s:54px}.cubes{opacity:.4}}
+/* marquee */
+.marq{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap;border-block:4px solid var(--red);transform:rotate(-1.2deg);margin:-14px -10px 0;position:relative;z-index:4}
+.marq div{display:inline-block;padding:10px 0;font-family:Anton,Impact,sans-serif;font-size:30px;text-transform:uppercase;animation:mq 26s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:90px 20px;max-width:1200px;margin:0 auto;position:relative}
+h2{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(52px,12vw,130px);line-height:.92;margin:0 0 30px}
+h2 em{font-family:"DM Serif Display",serif;text-transform:none;color:var(--red)}
+.js .reveal{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.about{display:grid;gap:34px;grid-template-columns:1.4fr 1fr;align-items:start}
+.about p{margin:0 0 18px;max-width:62ch}
+.about p:first-of-type::first-letter{font-family:Anton,Impact,sans-serif;font-size:78px;float:left;line-height:.8;padding:6px 10px 0 0;color:var(--red)}
+.about .photo{transform:rotate(-4deg)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;border:4px solid var(--ink);background:var(--paper)}
+.stat{padding:26px 20px;border-right:4px solid var(--ink);border-bottom:4px solid var(--ink);margin:0 -4px -4px 0;transition:background .3s,color .3s}
+.stat:hover{background:var(--yel);color:#1a1410}
+.stat .n{font-family:Anton,Impact,sans-serif;font-size:clamp(70px,11vw,120px);line-height:1}
+.stat .t{font:700 13px "Space Mono",monospace;text-transform:uppercase}
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.filters button{font:700 14px "Space Mono",monospace;text-transform:uppercase;background:transparent;color:var(--ink);border:3px solid var(--ink);border-radius:99px;padding:8px 16px;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.filters button:hover{transform:rotate(-3deg) scale(1.05)}
+.filters button.on{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:30px}
+.card{background:var(--card);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:16px 16px 20px;display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,opacity .35s}
+.card:nth-child(odd){transform:rotate(-1.2deg)}.card:nth-child(even){transform:rotate(1deg)}
+.card:hover{transform:translateY(-10px) perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:12px 16px 0 var(--red)}
+.card.out{opacity:0;transform:scale(.85) rotate(4deg)}
+.card[hidden]{display:none}
+.card h3{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:30px;line-height:1;margin:6px 0 0}
+.card p{margin:0;font-size:16px;line-height:1.45}
+.tag{align-self:flex-start;font:700 11px "Space Mono",monospace;text-transform:uppercase;background:var(--blue);color:#fff;padding:3px 9px;border-radius:99px}
+.tag.wip{background:var(--red)}
+.card .photo{box-shadow:none;border-width:2px;padding:8px}
+.card a.go{margin-top:auto;font:700 14px "Space Mono",monospace;text-transform:uppercase;text-decoration:none;border:3px solid var(--ink);padding:9px 14px;text-align:center;transition:background .25s,color .25s,letter-spacing .25s}
+.card a.go:hover{background:var(--ink);color:var(--bg);letter-spacing:.08em}
+/* contact */
+.contact{text-align:center}
+.mail{display:inline-block;font-family:Anton,Impact,sans-serif;font-size:clamp(30px,7vw,84px);text-transform:none;text-decoration:none;word-break:break-all;border-bottom:6px solid var(--red);transition:color .25s,transform .25s}
+.mail:hover{color:var(--red);transform:rotate(-2deg) scale(1.03)}
+.links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:34px}
+.links a{font:700 15px "Space Mono",monospace;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:99px;border:3px solid var(--ink);transition:background .25s,color .25s,transform .25s}
+.links a:hover{background:var(--yel);color:#1a1410;transform:translateY(-4px) rotate(-3deg)}
+footer{text-align:center;font:700 12px "Space Mono",monospace;padding:30px 20px calc(30px + env(safe-area-inset-bottom,0px));border-top:4px solid var(--ink)}
+@media (max-width:760px){
+ nav a.l{display:none}nav a.l.keep{display:inline-block}
+ .about{grid-template-columns:1fr}
+ .hero-photo{position:relative;right:auto;bottom:auto;margin:30px 0 0 auto}
+ .badge{left:auto;right:12px;top:78px}
+ section{padding:64px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .name span{opacity:1;transform:none}
+ .js .reveal,.js .reveal.fl,.js .reveal.fr,.js .reveal.fz,.js .reveal.fx{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="cubes" aria-hidden="true">
+ <div class="cube c1"><i>0</i><i>1</i><i>D</i><i>A</i><i>T</i><i>A</i></div>
+ <div class="cube c2"><i>7</i><i>3</i><i>0</i><i>9</i><i>1</i><i>4</i></div>
+ <div class="cube c3"><i>S</i><i>Q</i><i>L</i><i>1</i><i>0</i><i>1</i></div>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-mag" viewBox="0 0 200 160"><rect x="20" y="90" width="26" height="55" fill="#2336c9"/><rect x="56" y="62" width="26" height="83" fill="#f2b71f"/><rect x="92" y="105" width="26" height="40" fill="#d83a1e"/><rect x="128" y="40" width="26" height="105" fill="#1a1410"/><line x1="10" y1="146" x2="190" y2="146" stroke="#1a1410" stroke-width="5"/><circle cx="128" cy="52" r="34" fill="#fff" fill-opacity=".6" stroke="#1a1410" stroke-width="8"/><line x1="152" y1="76" x2="186" y2="116" stroke="#1a1410" stroke-width="12" stroke-linecap="round"/></symbol>
+  <symbol id="i-db" viewBox="0 0 200 160"><ellipse cx="100" cy="34" rx="62" ry="20" fill="#2336c9" stroke="#1a1410" stroke-width="6"/><path d="M38 34v32c0 11 28 20 62 20s62-9 62-20V34" fill="#f2b71f" stroke="#1a1410" stroke-width="6"/><path d="M38 66v32c0 11 28 20 62 20s62-9 62-20V66" fill="#d83a1e" stroke="#1a1410" stroke-width="6"/><ellipse cx="100" cy="34" rx="62" ry="20" fill="#2336c9" stroke="#1a1410" stroke-width="6"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 200 160"><circle cx="100" cy="80" r="52" fill="#f2b71f" stroke="#1a1410" stroke-width="6"/><circle cx="82" cy="70" r="9" fill="#1a1410"/><circle cx="118" cy="70" r="9" fill="#1a1410"/><path d="M72 96q28 26 56 0" fill="none" stroke="#1a1410" stroke-width="7" stroke-linecap="round"/><path d="M20 24l22 24M180 24l-22 24M100 8v22" stroke="#d83a1e" stroke-width="8" stroke-linecap="round"/></symbol>
+  <symbol id="i-term" viewBox="0 0 200 160"><rect x="14" y="20" width="172" height="120" fill="#1a1410" stroke="#1a1410" stroke-width="6"/><rect x="14" y="20" width="172" height="22" fill="#d83a1e"/><circle cx="30" cy="31" r="5" fill="#fff"/><circle cx="46" cy="31" r="5" fill="#f2b71f"/><path d="M34 70l22 18-22 18" fill="none" stroke="#f2b71f" stroke-width="8" stroke-linecap="round"/><line x1="70" y1="108" x2="120" y2="108" stroke="#fff" stroke-width="8" stroke-linecap="round"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 200 160"><g stroke="#1a1410" stroke-width="5"><circle cx="40" cy="110" r="14" fill="#2336c9"/><circle cx="76" cy="84" r="14" fill="#f2b71f"/><circle cx="112" cy="96" r="14" fill="#d83a1e"/><circle cx="148" cy="52" r="14" fill="#2336c9"/><circle cx="170" cy="30" r="14" fill="#f2b71f"/></g><path d="M20 130L180 20" stroke="#1a1410" stroke-width="6" stroke-dasharray="10 10"/></symbol>
+ </defs>
+</svg>
+
+<nav>
+ <a class="logo" href="#top">AWADH<b>*</b></a>
+ <a class="l keep" href="#about">About</a>
+ <a class="l" href="#skills">Skills</a>
+ <a class="l" href="#stats">Stats</a>
+ <a class="l keep" href="#projects">Work</a>
+ <a class="l keep" href="#contact">Hello</a>
+ <button id="theme" type="button" aria-label="Toggle dark and light mode">☾</button>
+</nav>
+
+<header id="top">
+ <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div><div class="shape s4"></div>
+ <h1 class="name" aria-label="Awadh"><span data-l="A">A</span><span data-l="W">W</span><span data-l="A">A</span><span data-l="D">D</span><span data-l="H">H</span></h1>
+ <p class="sub">Computer Science student. Lover of data. Finder of <u>stories</u> hiding in numbers.</p>
+ <svg class="badge" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="98" fill="#f2b71f" stroke="#1a1410" stroke-width="5"/><path id="c" d="M100 100m-68 0a68 68 0 1 1 136 0a68 68 0 1 1-136 0" fill="none"/><text font-family="Space Mono,monospace" font-weight="700" font-size="17" fill="#1a1410"><textPath href="#c">GRADUATING 2027 ★ ASK ME ABOUT DATA ★</textPath></text><circle cx="100" cy="100" r="22" fill="#d83a1e" stroke="#1a1410" stroke-width="5"/></svg>
+ <figure class="photo hero-photo"><svg role="img" aria-label="Magnifying glass over a bar chart"><use href="#i-mag"/></svg><figcaption>Fig. A: the usual suspect</figcaption></figure>
+ <div class="wrong">poke my name. it’s made of numbers.</div>
+</header>
+
+<div class="marq" aria-hidden="true"><div>Curious ★ Messy data ★ Clean tables ★ Hidden patterns ★ Good questions ★ Curious ★ Messy data ★ Clean tables ★ Hidden patterns ★ Good questions ★ Curious ★ Messy data ★ Clean tables ★ Hidden patterns ★ Good questions ★ Curious ★ Messy data ★ Clean tables ★ Hidden patterns ★ Good questions ★ </div></div>
+
+<section id="about">
+ <h2 class="reveal fl">About <em>me</em></h2>
+ <div class="about reveal fr">
+  <div>
+   <p>I’m Awad, a Computer Science student at the University of Nyíregyháza, graduating in 2027. I love data. I’m fascinated by the way a messy pile of numbers can turn into a clear answer, a pattern nobody noticed, or a decision someone can trust.</p>
+   <p>I’m drawn to the whole journey of data: finding it, cleaning it, structuring it, and making sense of it. Whether I’m studying a job market, organizing information so it’s easy to work with, or just following a hunch in a dataset, I enjoy the process as much as the result.</p>
+   <p>I’m looking for an opportunity where I can keep learning and put that passion to work.</p>
+  </div>
+  <figure class="photo"><svg role="img" aria-label="A smiling sun-brain with sparks"><use href="#i-brain"/></svg><figcaption>Fig. B: me, thinking</figcaption></figure>
+ </div>
+</section>
+
+<section id="skills">
+ <h2 class="reveal fx">What I <em>work with</em></h2>
+ <div class="skills">
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Language</small><b>Python</b></div><div class="face b">Cleaning, exploring and automating data work.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Query language</small><b>SQL</b></div><div class="face b">Asking questions, building warehouses and marts.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Database</small><b>DuckDB</b></div><div class="face b">Fast analytics, used in my job market study.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Library</small><b>Pandas</b></div><div class="face b">Exploring and reshaping messy datasets.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Tool</small><b>Git</b></div><div class="face b">Branches, merges and a tidy history.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>System</small><b>Linux</b></div><div class="face b">At home in the command line.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Database</small><b>SQLite</b></div><div class="face b">Small, simple, handy databases.</div></div></div>
+  <div class="skill reveal" tabindex="0"><div class="sk"><div class="face f"><small>Learning now</small><b>Java</b></div><div class="face b">One exercise at a time.</div></div></div>
+ </div>
+ <p class="mono hint reveal">hover, tap or press Enter on a tile to flip it</p>
+</section>
+
+<section id="stats">
+ <h2 class="reveal fr">By the <em>numbers</em></h2>
+ <div class="stats reveal fz">
+  <div class="stat"><div class="n" data-count="3">0</div><div class="t">Projects built</div></div>
+  <div class="stat"><div class="n" data-count="2027">0</div><div class="t">Graduation year</div></div>
+  <div class="stat"><div class="n" data-count="3">0</div><div class="t">Questions answered about the job market</div></div>
+  <div class="stat"><div class="n" data-count="100" data-suf="%">0</div><div class="t">Curious, always</div></div>
+ </div>
+</section>
+
+<section id="projects">
+ <h2 class="reveal fx">Selected <em>work</em></h2>
+ <div class="filters reveal fl" role="group" aria-label="Filter projects">
+  <button class="on" data-f="all">All</button><button data-f="analysis">Analysis</button><button data-f="engineering">Engineering</button><button data-f="databases">Databases</button>
+ </div>
+ <div class="grid reveal fx" id="grid">
+  <article class="card" data-cat="analysis">
+   <figure class="photo"><svg role="img" aria-label="Bar chart with magnifier"><use href="#i-mag"/></svg></figure>
+   <span class="tag">Data analysis</span><h3>Hungarian Data Job Market</h3>
+   <p>What the Hungarian data job market asks for and pays for: the most in-demand skills, the best-paid ones, and the sweet spot where both meet.</p>
+   <a class="go" href="https://github.com/Awadh19b/sql-job-market-analysis" target="_blank" rel="noopener">See the project</a>
+  </article>
+  <article class="card" data-cat="engineering databases">
+   <figure class="photo"><svg role="img" aria-label="Stack of database layers"><use href="#i-db"/></svg></figure>
+   <span class="tag">Data engineering</span><h3>Job Data Warehouse &amp; Marts</h3>
+   <p>A star-schema warehouse that turns raw job listings into tidy tables, with small marts built to answer specific questions fast.</p>
+   <a class="go" href="https://github.com/Awadh19b/Job_Data-Warehouse_Data_marts" target="_blank" rel="noopener">See the repo</a>
+  </article>
+  <article class="card" data-cat="analysis">
+   <figure class="photo"><svg role="img" aria-label="Scatter plot with trend line"><use href="#i-dots"/></svg></figure>
+   <span class="tag wip">In progress</span><h3>Online Behaviour &amp; Wellbeing</h3>
+   <p>How do students’ social media habits relate to how they feel? An open-data study, with honest notes on what the numbers can and can’t say.</p>
+   <a class="go" href="https://github.com/Awadh19b/social-media-wellbeing" target="_blank" rel="noopener">Follow along</a>
+  </article>
+ </div>
+</section>
+
+<section id="contact" class="contact">
+ <h2 class="reveal fz">Say <em>hello</em></h2>
+ <div class="reveal fx">
+  <button class="mail" id="copy" type="button" data-email="alahmadywork@gmail.com" aria-label="Copy email address">alahmadywork@gmail.com</button>
+  <p id="copied" role="status">click the email to copy it</p>
+  <div class="links">
+   <a href="https://www.linkedin.com/in/awadh-ba-odhah-65b448207" target="_blank" rel="noopener">LinkedIn</a>
+   <a href="https://github.com/Awadh19b" target="_blank" rel="noopener">GitHub</a>
+  </div>
+ </div>
+</section>
+
+<footer>© 2026 AWADH ★ NYÍREGYHÁZA ★ MADE WITH TOO MUCH CURIOSITY</footer>
+
+<script>
+(function(){
+ var root=document.documentElement; root.classList.add('js');
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ // theme
+ var btn=document.getElementById('theme');
+ try{var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+ function isDark(){var t=root.getAttribute('data-theme'); return t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;}
+ function paint(){btn.textContent=isDark()?'☀':'☾';}
+ btn.addEventListener('click',function(){var n=isDark()?'light':'dark'; root.setAttribute('data-theme',n); try{localStorage.setItem('theme',n);}catch(e){} paint();});
+ paint();
+ // reveal
+ var rev=document.querySelectorAll('.reveal');
+ if('IntersectionObserver' in window&&!reduce){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  rev.forEach(function(r){io.observe(r);});
+ }else{rev.forEach(function(r){r.classList.add('in');});}
+ // counters
+ function count(el){
+  var to=+el.dataset.count,suf=el.dataset.suf||'';
+  if(reduce){el.textContent=to+suf;return;}
+  var s=null,d=1500;
+  function step(t){if(!s)s=t;var p=Math.min((t-s)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(to*e)+suf;if(p<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);
+ }
+ var nums=document.querySelectorAll('[data-count]');
+ if('IntersectionObserver' in window){
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);co.unobserve(e.target);}});},{threshold:.5});
+  nums.forEach(function(n){co.observe(n);});
+ }else{nums.forEach(count);}
+ // nav highlight
+ var links=document.querySelectorAll('nav a.l');
+ if('IntersectionObserver' in window){
+  var no=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){no.observe(s);});
+ }
+ // numbers effect on the name
+ try{
+  var T=120,cv=document.createElement('canvas');cv.width=cv.height=T;var cx=cv.getContext('2d');
+  var build=function(){
+   cx.fillStyle='#1a1410';cx.fillRect(0,0,T,T);
+   cx.font='bold 18px "Space Mono",monospace';cx.textBaseline='top';
+   var cols=['#f1e6cf','#f2b71f','#d83a1e','#8fa0ff'];
+   for(var i=0;i<6;i++)for(var j=0;j<6;j++){
+    var ch=(i===2&&j<4)?'DATA'[j]:String(Math.floor(Math.random()*10));
+    cx.fillStyle=(i===2&&j<4)?'#f2b71f':cols[Math.floor(Math.random()*4)];
+    cx.fillText(ch,j*20+4,i*20+1);
+   }
+   root.style.setProperty('--tile','url('+cv.toDataURL()+')');
+  };
+  build();
+  if(document.fonts&&document.fonts.load){document.fonts.load('700 18px "Space Mono"').then(build,function(){});}
+  var hero=document.getElementById('top'),ls=document.querySelectorAll('.name span');
+  var mv=function(e){ls.forEach(function(s){var r=s.getBoundingClientRect();s.style.setProperty('--mx',(e.clientX-r.left)+'px');s.style.setProperty('--my',(e.clientY-r.top)+'px');});};
+  var off=function(){ls.forEach(function(s){s.style.setProperty('--mx','-999px');s.style.setProperty('--my','-999px');});};
+  hero.addEventListener('pointermove',mv);hero.addEventListener('pointerdown',mv);hero.addEventListener('pointerleave',off);
+ }catch(e){}
+ // scroll-driven layer
+ var nav=document.querySelector('nav'),bar=document.getElementById('bar'),hero=document.getElementById('top'),cubesEl=document.querySelector('.cubes'),mq=document.querySelector('.marq div'),parEls=document.querySelectorAll('.stat,.about figure.photo'),lastY=window.scrollY,tick=false;
+ function onScroll(){
+  var y=window.scrollY,vh=window.innerHeight,max=document.documentElement.scrollHeight-vh;
+  bar.style.setProperty('--prog',max>0?(y/max).toFixed(4):0);
+  if(reduce)return;
+  hero.style.setProperty('--h',Math.min(y/(vh*.85),1).toFixed(3));
+  cubesEl.style.setProperty('--sy',y);
+  var dy=y-lastY;
+  if(Math.abs(dy)>4){nav.classList.toggle('hide',dy>0&&y>160);if(mq)mq.style.animationDirection=dy>0?'normal':'reverse';lastY=y;}
+  parEls.forEach(function(el){var r=el.getBoundingClientRect();var p=(r.top+r.height/2-vh/2)/vh;el.style.setProperty('--p',Math.max(-1,Math.min(1,p)).toFixed(3));});
+ }
+ window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){onScroll();tick=false;});}},{passive:true});
+ window.addEventListener('resize',onScroll);
+ onScroll();
+ // skill tiles: varied entrances and flip
+ document.querySelectorAll('.skill').forEach(function(s,i){
+  s.classList.add(['fl','fz','fr','fx'][i%4]);s.style.transitionDelay=((i%4)*90)+'ms';
+  s.addEventListener('click',function(){s.classList.toggle('flip');});
+  s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();s.classList.toggle('flip');}});
+ });
+ // 3D tilt on project cards
+ document.querySelectorAll('.card').forEach(function(c){
+  c.addEventListener('pointermove',function(e){if(reduce||e.pointerType==='touch')return;var r=c.getBoundingClientRect();c.style.setProperty('--ry',(((e.clientX-r.left)/r.width-.5)*16)+'deg');c.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5)*16)+'deg');});
+  c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg');});
+ });
+ // copy email
+ var cb=document.getElementById('copy'),cm=document.getElementById('copied');
+ function done(ok){cm.textContent=ok?'Copied to clipboard ✓':'Couldn’t copy automatically. Select the email and copy it by hand.';}
+ cb.addEventListener('click',function(){
+  var t=cb.dataset.email;
+  function fb(){try{var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=document.execCommand('copy');document.body.removeChild(a);done(ok);}catch(e){done(false);}}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},fb);}else{fb();}
+ });
+ // filter
+ var fb=document.querySelectorAll('.filters button'),cards=document.querySelectorAll('.card');
+ fb.forEach(function(b){b.addEventListener('click',function(){
+  fb.forEach(function(x){x.classList.toggle('on',x===b);});
+  var f=b.dataset.f;
+  cards.forEach(function(c){
+   var show=f==='all'||c.dataset.cat.split(' ').indexOf(f)>-1;
+   if(show){c.hidden=false;requestAnimationFrame(function(){requestAnimationFrame(function(){c.classList.remove('out');});});}
+   else{c.classList.add('out');setTimeout(function(){if(c.classList.contains('out'))c.hidden=true;},reduce?0:350);}
+  });
+ });});
+})();
+</script>
+</body>
+</html>
